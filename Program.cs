@@ -9,7 +9,7 @@ Console.Clear();
 
 Console.WriteLine("====");
 string [] array = CreateArrayOne(3, 20);
-//PrintArray(array);
+PrintArrayOne(array);
 Console.WriteLine("****");
 
 /* Ф-ция заполняющая случайными печатными ASCII-символами 
@@ -20,49 +20,31 @@ string [] CreateArrayOne(int LengthArray, int maxLengthString){
     string [] array = new string[LengthArray]; //Создаем массив длиной LengthArray
     int n = 0; // ДЛИНА ЭЛЕМЕНТА. Создаем ее здесь, чтобы в цикле не инициализировать ее каждый раз
     byte randNum = 0;
-
     string temp_s = ""; // Создаем строковую переменную, куда будем добавлять геннерируемые символы
     
     // Заполняем массив случайными печатными ASCII-символами
     for(int i = 0; i < LengthArray; i++){  // Цикл, который задает кол-во итераций, равное элементам массива array
         // Задаем случайным образом длину следующего элемента массива (от 1 до maxLengthString)
         n = new Random().Next(1, maxLengthString + 1);
-        Console.WriteLine($"n= {n}");
         // Заполняем строку печатными символами случайным образом
         for(int j = 0; j < n ; j++){           
             randNum = (byte)rand.Next(32, 127); //Задаем случайное число в диапазоне 32..126
             temp_s += (char)randNum;
-    //       Console.WriteLine($"randNum= {randNum}, temp_s= {temp_s}");
         }
-
         array[i] = temp_s;
-       
-        Console.WriteLine($"array[{i}]= {array[i]}");
-        Console.WriteLine();
         temp_s = "";
     }
     Console.WriteLine();
     return array;
 }
-/*
-// Ф-ция вывода двумерного массива в консоль ввиде таблицы.
-void PrintArray(string[] array){
-    Console.WriteLine($"Массив размером {array.Length}:");
 
+// Ф-ция вывода одномерного массива в консоль
+void PrintArrayOne(string[] array){
+    Console.Write("[\"");
     for(int i = 0; i < array.Length; i++){
         Console.Write( array[i] );
-        Console.WriteLine();
-    }     
+        if( i < array.Length -1 )
+            Console.Write("\", \"");
+    } 
+    Console.Write("\"]");    
 }
-*/
-/*
-    Random rand = new Random(); // объявление переменной для генерации чисел
-    for(int i = 0; i < m; i++){
-        for(int j = 0; j < n; j++){
-            arrayMxN[i,j] = Convert.ToString(rand.Next(-99, 100)/10.0);
-        }
-    }
-// arrayMxN[i,j] = Convert.ToString(rand.Next(-99, 100)/10.0);
-
-.GetEncoding("windows-1251")
-*/
